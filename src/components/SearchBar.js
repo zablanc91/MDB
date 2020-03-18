@@ -6,7 +6,8 @@ const SearchBar = (props) => {
             <input 
                 type="text" 
                 className="searchbar" 
-                placeholder="Search for a movie, TV show, person..." onChange={props.handleInput}
+                placeholder="Search for a movie, TV show, person..." 
+                onChange={props.handleInput}
                 onKeyPress={props.search} />
         </section>
     );

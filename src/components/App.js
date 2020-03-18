@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import SearchBar from './SearchBar';
+import Results from './Results';
 import { APIkey } from '../config/keys';
 import axios from 'axios';
 
@@ -19,11 +20,15 @@ const App = () => {
         });
     }
 
-    //function to make API call after user hits enter in SearchBar
+    //function to make API call after user hits enter in SearchBar, update our state with the search results
     const search = (e) => {
         if(e.key === "Enter"){
             axios(APIkey + '&s=' + state.searchTerm).then((data) => {
-                console.log(data);
+                let results = data.data.Search;
+                setState( (prevState) => {
+                    return {...prevState, results};
+                });
+                //console.log(data);
             });
         }
     }
@@ -35,6 +40,7 @@ const App = () => {
             </header>
             <main>
                 <SearchBar handleInput={handleInput} search={search} />
+                <Results results={state.results} />
             </main>
         </div>
     );
