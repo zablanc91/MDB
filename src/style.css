@@ -30,6 +30,8 @@ section {
     padding: 15px;
 }
 
+/* Searchbar styling */
+
 .searchbar {
     width: 100%;
     padding: 15px;
@@ -46,6 +48,8 @@ section {
 .searchbar:focus {
     box-shadow: 0px 0px 8px 3px #4484c4;
 }
+
+/* Results/Result styling */
 
 .results {
     display: flex;
@@ -80,4 +84,63 @@ section {
 .result:hover h3 {
     background: #ffffff;
     color: #223343;
+}
+
+/* Popup styling */
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #445565;
+    overflow-y: scroll;
+}
+
+.content {
+    display: block;
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 25px;
+    color: #ffffff;
+}
+
+.content h2 {
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.content h2 span {
+    font-weight: 300;
+    font-size: 20px;
+}
+
+.content .plot {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0px -15px 30px;
+}
+
+.content .plot p {
+    flex: 1 1 50%;
+    padding: 15px;
+}
+
+.content .close {
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 18px;
+    font-weight: 700;
+    background: #4484C4;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    appearance: none;
+    cursor: pointer;
+    transition: 0.4s ease-out;
+}
+
+.content .close:hover {
+    background: #223343;
 }

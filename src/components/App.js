@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import SearchBar from './SearchBar';
 import Results from './Results';
+import Popup from './Popup';
 import { APIkey } from '../config/keys';
 import axios from 'axios';
 
@@ -28,11 +29,28 @@ const App = () => {
                 setState( (prevState) => {
                     return {...prevState, results};
                 });
-                //console.log(data);
             });
         }
     }
 
+    //function to set our state's selected movie when a Result is clicked, will display Popup with more information
+    const openPopup = (id) => {
+        axios(APIkey + "&i=" + id).then((data) => {
+            let selected = data.data;
+            setState( (prevState) => {
+                return {...prevState, selected};
+            });
+        });
+    }
+
+    //set state's selected value to false in order to unrender the Popup
+    const closePopup = () => {
+        setState(prevState => {
+            return {...prevState, selected: {}};
+        });
+    }
+
+    //only render Popup if our state's selected field is set
     return(
         <div>
             <header>
@@ -40,7 +58,9 @@ const App = () => {
             </header>
             <main>
                 <SearchBar handleInput={handleInput} search={search} />
-                <Results results={state.results} />
+                <Results results={state.results} openPopup={openPopup} />
+
+                {(typeof state.selected.Title != "undefined") ? <Popup selected={state.selected} closePopup={closePopup} /> : false}
             </main>
         </div>
     );

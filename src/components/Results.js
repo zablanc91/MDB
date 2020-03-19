@@ -5,7 +5,7 @@ const Results = (props) => {
     return(
         <section className="results">
             {props.results.map(result => {
-                return <Result result={result} key={result.imdbID} />
+                return <Result result={result} openPopup={props.openPopup} key={result.imdbID} />
             })}
         </section>
     );
