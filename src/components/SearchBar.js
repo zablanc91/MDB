@@ -8,7 +8,8 @@ const SearchBar = (props) => {
                 className="searchbar" 
                 placeholder="Search for a movie, TV show, person..." 
                 onChange={props.handleInput}
-                onKeyPress={props.search} />
+                onKeyPress={props.search} 
+            />
         </section>
     );
 }
